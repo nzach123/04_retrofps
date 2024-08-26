@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bosesbvnakx3t"]
+[gd_scene load_steps=34 format=3 uid="uid://bosesbvnakx3t"]
 
 [ext_resource type="Script" path="res://Characters/Player/player.gd" id="1_7n32i"]
 [ext_resource type="Script" path="res://Characters/Player/weapon_manager.gd" id="2_je3vv"]
@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://3lcixj2832b3" path="res://Effects/muzzle_flash/assets/muzzleflash3.glb" id="10_tdgnv"]
 [ext_resource type="PackedScene" uid="uid://cqdfoytf3iueo" path="res://Weapons/bullet_emitters/burst_emitter.tscn" id="12_ogxof"]
 [ext_resource type="PackedScene" uid="uid://d205cy7q3idqd" path="res://Weapons/bullet_emitters/spray_emitter.tscn" id="13_h6mlw"]
+[ext_resource type="PackedScene" uid="uid://dng2xydni8o07" path="res://Effects/muzzle_flash/assets/muzzleflash2.glb" id="16_euxft"]
+[ext_resource type="PackedScene" uid="uid://f65ay4t0qce6" path="res://Weapons/bullet_emitters/projectile_emitter.tscn" id="17_r4m4w"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jyx7a"]
 
@@ -256,6 +258,7 @@ unique_name_in_owner = true
 
 [node name="Machete" type="Node3D" parent="Camera3D/WeaponManager/Weapons"]
 transform = Transform3D(0.405, 0, 0, 0, 0.405, 0, 0, 0, 0.405, 0.6, -0.4, -0.7)
+visible = false
 script = ExtResource("4_67brc")
 damage = 35
 ammo = -1
@@ -346,7 +349,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="RocketLauncher" type="Node3D" parent="Camera3D/WeaponManager/Weapons"]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.5, -0.3, -1)
-visible = false
+script = ExtResource("4_67brc")
+damage = 50
+attack_rate = 0.5
 
 [node name="Graphics" type="Node3D" parent="Camera3D/WeaponManager/Weapons/RocketLauncher"]
 
@@ -357,6 +362,16 @@ libraries = {
 "": SubResource("AnimationLibrary_iye38")
 }
 autoplay = "RESET"
+
+[node name="MuzzleFlash" parent="Camera3D/WeaponManager/Weapons/RocketLauncher/Graphics" instance=ExtResource("6_gfhlx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00975668, 0.542102, -1.77808)
+
+[node name="muzzleflash2" parent="Camera3D/WeaponManager/Weapons/RocketLauncher/Graphics/MuzzleFlash" instance=ExtResource("16_euxft")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="BulletEmitter" parent="Camera3D/WeaponManager/Weapons/RocketLauncher" instance=ExtResource("7_2m71p")]
+
+[node name="ProjectileEmitter" parent="Camera3D/WeaponManager/Weapons/RocketLauncher/BulletEmitter" instance=ExtResource("17_r4m4w")]
 
 [node name="CharacterMover" parent="." instance=ExtResource("2_vtwgx")]
 
