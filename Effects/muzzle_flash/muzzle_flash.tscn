@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://det85ag3g28l0"]
+
+[ext_resource type="Script" path="res://Effects/muzzle_flash/muzzle_flash.gd" id="1_dl4ls"]
+
+[node name="MuzzleFlash" type="Node3D"]
+script = ExtResource("1_dl4ls")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(0.936819, 0.800691, 0.268654, 1)
+omni_range = 15.0
+omni_attenuation = 0.25

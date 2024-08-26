@@ -63,7 +63,9 @@ func _process(delta):
 	character_mover.set_move_dir(move_dir)
 	if Input.is_action_just_pressed("jump"):
 		character_mover.jump()
-
+		
+	weapon_manager.attack(Input.is_action_just_pressed("attack"), Input.is_action_pressed("attack"))
+	
 func kill():
 	dead = true
 	character_mover.set_move_dir(Vector3.ZERO)
