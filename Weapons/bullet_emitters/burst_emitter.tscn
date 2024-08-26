@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqdfoytf3iueo"]
+
+[ext_resource type="Script" path="res://Weapons/bullet_emitters/burst_emitter.gd" id="1_bfpwn"]
+
+[node name="BurstEmitter" type="Node3D"]
+script = ExtResource("1_bfpwn")

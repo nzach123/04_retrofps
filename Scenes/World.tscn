@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://wcohgukxxckn"]
+[gd_scene load_steps=13 format=3 uid="uid://wcohgukxxckn"]
 
 [ext_resource type="PackedScene" uid="uid://b6ae8gsib8s7d" path="res://Environment/rock_boulder.tscn" id="1_qsaq3"]
 [ext_resource type="PackedScene" uid="uid://rdac1dtp4lwp" path="res://Environment/rock_cliff.tscn" id="2_inia4"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c6bu2y3mx70d3" path="res://Environment/sand.tscn" id="4_iey3c"]
 [ext_resource type="Material" uid="uid://ca63xobsh7t3s" path="res://Environment/Assets/1x1_grid.tres" id="5_51e0j"]
 [ext_resource type="PackedScene" uid="uid://bosesbvnakx3t" path="res://Characters/Player/Player.tscn" id="6_ssm7k"]
+[ext_resource type="Script" path="res://Characters/health_manager.gd" id="7_k8yiq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_staw2"]
 
@@ -16,6 +17,10 @@ sky_material = SubResource("ProceduralSkyMaterial_staw2")
 background_mode = 2
 sky = SubResource("Sky_c2ql7")
 tonemap_mode = 3
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jwruw"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_3myed"]
 
 [node name="World" type="Node3D"]
 
@@ -49,3 +54,15 @@ size = Vector3(50, 6, 50)
 material = ExtResource("5_51e0j")
 
 [node name="Player" parent="." instance=ExtResource("6_ssm7k")]
+
+[node name="TestTarget" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -5)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("7_k8yiq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestTarget"]
+shape = SubResource("SphereShape3D_jwruw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestTarget"]
+mesh = SubResource("SphereMesh_3myed")

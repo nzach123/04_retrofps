@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctwixgwqvunyx"]
+
+[ext_resource type="Script" path="res://Weapons/bullet_emitters/area_damage_emitter.gd" id="1_cqkpw"]
+
+[node name="AreaDamageEmitter" type="Node3D"]
+script = ExtResource("1_cqkpw")
+
+[node name="LOSRaycast" type="RayCast3D" parent="."]
+enabled = false
