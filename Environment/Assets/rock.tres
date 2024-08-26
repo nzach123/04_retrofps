@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://25uib8o6aq6h" path="res://Environment/Assets/jungle_stone_d.jpg" id="1_5k5gl"]
 
 [resource]
-albedo_color = Color(0.73, 0.73, 0.73, 1)
+specular_mode = 2
 albedo_texture = ExtResource("1_5k5gl")
 uv1_scale = Vector3(0.08, 0.08, 0.08)
 uv1_triplanar = true

@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://co1p70ox2eebs"
-path.s3tc="res://.godot/imported/machete_shinymetal.png-b4a0c64ed815eb5910ed8f1896319aee.s3tc.ctex"
+uid="uid://cjh4lsauyx6hj"
+path.s3tc="res://.godot/imported/shinymetal.png-e8aea9348ac62dbded8b7f467fc7c058.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "cae343c97d7cfb5e764eec3bedcf77c8"
-}
 
 [deps]
 
-source_file="res://Assets/Weapons/machete_shinymetal.png"
-dest_files=["res://.godot/imported/machete_shinymetal.png-b4a0c64ed815eb5910ed8f1896319aee.s3tc.ctex"]
+source_file="res://Weapons/Assets/shinymetal.png"
+dest_files=["res://.godot/imported/shinymetal.png-e8aea9348ac62dbded8b7f467fc7c058.s3tc.ctex"]
 
 [params]
 

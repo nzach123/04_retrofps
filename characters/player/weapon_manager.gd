@@ -10,7 +10,7 @@ var cur_weapon = null
 func _ready() -> void:
 	disable_all_weapons()
 	for _i in range(weapons.size()):
-		weapons_unlocked.append(false)
+		weapons_unlocked.append(true)
 		
 		
 func disable_all_weapons():
@@ -45,6 +45,5 @@ func switch_to_weapon_slot(slot_ind: int)->bool:
 		cur_weapon.set_active(true)
 	else:
 		cur_weapon.show()
-	
-	
 	return true
+	

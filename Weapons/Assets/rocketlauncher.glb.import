@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cs67tsld4ijyh"
-path="res://.godot/imported/machete.glb-e4c8e15db019a19609432f3c11c365ad.scn"
+uid="uid://c43s7ip4avoq1"
+path="res://.godot/imported/rocketlauncher.glb-8b6a3304080327b48784937d5cd730a4.scn"
 
 [deps]
 
-source_file="res://Assets/Weapons/machete.glb"
-dest_files=["res://.godot/imported/machete.glb-e4c8e15db019a19609432f3c11c365ad.scn"]
+source_file="res://Weapons/Assets/rocketlauncher.glb"
+dest_files=["res://.godot/imported/rocketlauncher.glb-8b6a3304080327b48784937d5cd730a4.scn"]
 
 [params]
 
@@ -31,6 +31,17 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"BlackMetal": {
+"use_external/enabled": true,
+"use_external/path": "res://Weapons/Materials/black_metal.material"
+},
+"GreenPlating": {
+"use_external/enabled": true,
+"use_external/path": "res://Weapons/Materials/green_metal.material"
+}
+}
+}
 gltf/naming_version=1
-gltf/embedded_image_handling=1
+gltf/embedded_image_handling=0

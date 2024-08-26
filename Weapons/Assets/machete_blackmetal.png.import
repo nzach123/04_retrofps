@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwe6b5nbj8wu2"
-path.s3tc="res://.godot/imported/rocketlauncher_greenmetal.png-b4780f808a6bbd88f9f1433a393de9bc.s3tc.ctex"
+uid="uid://caxjfdidrfcoq"
+path.s3tc="res://.godot/imported/machete_blackmetal.png-4cccda5ef952203898e18a680d8634e5.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "f68b513ff8cdcbd60206585a3c7afcd4"
+"md5": "bd904881e7fb776d202d31036cb0a9be"
 }
 
 [deps]
 
-source_file="res://Assets/Weapons/rocketlauncher_greenmetal.png"
-dest_files=["res://.godot/imported/rocketlauncher_greenmetal.png-b4780f808a6bbd88f9f1433a393de9bc.s3tc.ctex"]
+source_file="res://Weapons/Assets/machete_blackmetal.png"
+dest_files=["res://.godot/imported/machete_blackmetal.png-4cccda5ef952203898e18a680d8634e5.s3tc.ctex"]
 
 [params]
 

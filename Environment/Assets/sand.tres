@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bebs1ob1a5830" path="res://Environment/Assets/desert_sand_big_d.jpg" id="1_bde00"]
 
 [resource]
-albedo_color = Color(0.62, 0.62, 0.62, 1)
+specular_mode = 2
 albedo_texture = ExtResource("1_bde00")
 uv1_scale = Vector3(0.08, 0.08, 0.08)
 uv1_triplanar = true

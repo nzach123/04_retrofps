@@ -1,23 +1,211 @@
-[gd_scene load_steps=11 format=3 uid="uid://bosesbvnakx3t"]
+[gd_scene load_steps=23 format=3 uid="uid://bosesbvnakx3t"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_7n32i"]
 [ext_resource type="Script" path="res://Characters/Player/weapon_manager.gd" id="2_je3vv"]
 [ext_resource type="PackedScene" uid="uid://efhaiq50xokb" path="res://characters/CharacterMover.tscn" id="2_vtwgx"]
 [ext_resource type="PackedScene" uid="uid://cl52xtt0w2y3b" path="res://characters/HealthManager.tscn" id="3_b3ae6"]
+[ext_resource type="PackedScene" uid="uid://t7einbvgh26v" path="res://Weapons/Assets/machinegun.glb" id="3_hehxn"]
+[ext_resource type="PackedScene" uid="uid://b2hgspogvsdxc" path="res://Weapons/Assets/machete.glb" id="4_lnimg"]
+[ext_resource type="PackedScene" uid="uid://nv0h2l1rygti" path="res://Weapons/Assets/shotgun.glb" id="5_430u4"]
+[ext_resource type="PackedScene" uid="uid://c43s7ip4avoq1" path="res://Weapons/Assets/rocketlauncher.glb" id="6_3o8j4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jyx7a"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_s242t"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_wsb7v"]
-size = Vector3(0.25, 0.25, 0.25)
+[sub_resource type="Animation" id="Animation_pv70w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
-[sub_resource type="SphereMesh" id="SphereMesh_67w5o"]
+[sub_resource type="Animation" id="Animation_slvdk"]
+resource_name = "attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.5),
+"transitions": PackedFloat32Array(-2, -2, -2, -2),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.987654, 0.493827, 0.493827), Vector3(-1.1259, -0.0181587, -0.788927), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.5),
+"transitions": PackedFloat32Array(-2, -2, -2, -2),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.428793, -0.515499, -0.912675), Vector3(-1.02198, 2.33936, -1.9773), Vector3(0, 0, 0)]
+}
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_5464c"]
-height = 1.01
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tmbbp"]
+_data = {
+"RESET": SubResource("Animation_pv70w"),
+"attack": SubResource("Animation_slvdk")
+}
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_wba2c"]
+[sub_resource type="Animation" id="Animation_1de03"]
+resource_name = "attack"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.151515), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ubusl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a177m"]
+_data = {
+"RESET": SubResource("Animation_ubusl"),
+"attack": SubResource("Animation_1de03")
+}
+
+[sub_resource type="Animation" id="Animation_ocvjl"]
+resource_name = "attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.133333, 0.266667, 0.333333, 0.433333, 0.633333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.5), Vector3(0, 0, 0.5), Vector3(0, -0.333333, -1.19209e-07), Vector3(0, -0.833333, -1.19209e-07), Vector3(0, -0.166667, -1.19209e-07), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.333333, 0.433333, 0.633333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(1.2203, 0.33364, 0.16392), Vector3(1.45692, 1.71531, 1.56545), Vector3(1.3013, 0.43602, 0.271327), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_crp7u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gtihu"]
+_data = {
+"RESET": SubResource("Animation_crp7u"),
+"attack": SubResource("Animation_ocvjl")
+}
+
+[sub_resource type="Animation" id="Animation_xm1qu"]
+resource_name = "attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.75), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5ces4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iye38"]
+_data = {
+"RESET": SubResource("Animation_5ces4"),
+"attack": SubResource("Animation_xm1qu")
+}
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
@@ -40,21 +228,66 @@ script = ExtResource("2_je3vv")
 
 [node name="Weapons" type="Node3D" parent="Camera3D/WeaponManager"]
 
-[node name="Machete" type="MeshInstance3D" parent="Camera3D/WeaponManager/Weapons"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, -0.3, -0.6)
-mesh = SubResource("BoxMesh_wsb7v")
+[node name="Machete" type="Node3D" parent="Camera3D/WeaponManager/Weapons"]
+transform = Transform3D(0.405, 0, 0, 0, 0.405, 0, 0, 0, 0.405, 0.6, -0.4, -0.7)
+visible = false
 
-[node name="MachineGun" type="MeshInstance3D" parent="Camera3D/WeaponManager/Weapons"]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.2, -0.3, -0.6)
-mesh = SubResource("SphereMesh_67w5o")
+[node name="Graphics" type="Node3D" parent="Camera3D/WeaponManager/Weapons/Machete"]
+transform = Transform3D(0.999997, 0, 0, 0, 0.999997, 0, 0, 0, 0.999997, 0, 0, 0)
 
-[node name="Shotgun" type="MeshInstance3D" parent="Camera3D/WeaponManager/Weapons"]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.2, -0.3, -0.6)
-mesh = SubResource("CylinderMesh_5464c")
+[node name="Machete" parent="Camera3D/WeaponManager/Weapons/Machete/Graphics" instance=ExtResource("4_lnimg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="RocketLauncher" type="MeshInstance3D" parent="Camera3D/WeaponManager/Weapons"]
-transform = Transform3D(0.4, 0, 0, 0, -1.74846e-08, 0.4, 0, -0.4, -1.74846e-08, 0.2, -0.3, -0.6)
-mesh = SubResource("CapsuleMesh_wba2c")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/WeaponManager/Weapons/Machete/Graphics"]
+libraries = {
+"": SubResource("AnimationLibrary_tmbbp")
+}
+autoplay = "RESET"
+
+[node name="MachineGun" type="Node3D" parent="Camera3D/WeaponManager/Weapons"]
+transform = Transform3D(0.66, 0, 0, 0, 0.66, 0, 0, 0, 0.66, 0.5, -0.4, -0.7)
+visible = false
+
+[node name="Graphics" type="Node3D" parent="Camera3D/WeaponManager/Weapons/MachineGun"]
+
+[node name="MachineGun" parent="Camera3D/WeaponManager/Weapons/MachineGun/Graphics" instance=ExtResource("3_hehxn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.151515)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/WeaponManager/Weapons/MachineGun/Graphics"]
+libraries = {
+"": SubResource("AnimationLibrary_a177m")
+}
+autoplay = "RESET"
+
+[node name="Shotgun" type="Node3D" parent="Camera3D/WeaponManager/Weapons"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.423776, -0.281994, -0.5)
+visible = false
+
+[node name="Graphics" type="Node3D" parent="Camera3D/WeaponManager/Weapons/Shotgun"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Shotgun" parent="Camera3D/WeaponManager/Weapons/Shotgun/Graphics" instance=ExtResource("5_430u4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/WeaponManager/Weapons/Shotgun/Graphics"]
+libraries = {
+"": SubResource("AnimationLibrary_gtihu")
+}
+autoplay = "RESET"
+
+[node name="RocketLauncher" type="Node3D" parent="Camera3D/WeaponManager/Weapons"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.5, -0.3, -1)
+visible = false
+
+[node name="Graphics" type="Node3D" parent="Camera3D/WeaponManager/Weapons/RocketLauncher"]
+
+[node name="RocketLauncher" parent="Camera3D/WeaponManager/Weapons/RocketLauncher/Graphics" instance=ExtResource("6_3o8j4")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/WeaponManager/Weapons/RocketLauncher/Graphics"]
+libraries = {
+"": SubResource("AnimationLibrary_iye38")
+}
+autoplay = "RESET"
 
 [node name="CharacterMover" parent="." instance=ExtResource("2_vtwgx")]
 
