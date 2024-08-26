@@ -1,13 +1,15 @@
-[gd_scene load_steps=23 format=3 uid="uid://bosesbvnakx3t"]
+[gd_scene load_steps=25 format=3 uid="uid://bosesbvnakx3t"]
 
-[ext_resource type="Script" path="res://characters/player/player.gd" id="1_7n32i"]
+[ext_resource type="Script" path="res://Characters/Player/player.gd" id="1_7n32i"]
 [ext_resource type="Script" path="res://Characters/Player/weapon_manager.gd" id="2_je3vv"]
-[ext_resource type="PackedScene" uid="uid://efhaiq50xokb" path="res://characters/CharacterMover.tscn" id="2_vtwgx"]
-[ext_resource type="PackedScene" uid="uid://cl52xtt0w2y3b" path="res://characters/HealthManager.tscn" id="3_b3ae6"]
+[ext_resource type="PackedScene" uid="uid://efhaiq50xokb" path="res://Characters/CharacterMover.tscn" id="2_vtwgx"]
+[ext_resource type="PackedScene" uid="uid://cl52xtt0w2y3b" path="res://Characters/HealthManager.tscn" id="3_b3ae6"]
 [ext_resource type="PackedScene" uid="uid://t7einbvgh26v" path="res://Weapons/Assets/machinegun.glb" id="3_hehxn"]
 [ext_resource type="PackedScene" uid="uid://b2hgspogvsdxc" path="res://Weapons/Assets/machete.glb" id="4_lnimg"]
 [ext_resource type="PackedScene" uid="uid://nv0h2l1rygti" path="res://Weapons/Assets/shotgun.glb" id="5_430u4"]
 [ext_resource type="PackedScene" uid="uid://c43s7ip4avoq1" path="res://Weapons/Assets/rocketlauncher.glb" id="6_3o8j4"]
+[ext_resource type="PackedScene" uid="uid://dl4sr7k2hgvdi" path="res://Weapons/bullet_emitters/bullet_emitter.tscn" id="7_2m71p"]
+[ext_resource type="PackedScene" uid="uid://b0r4p3uwrtw8p" path="res://Weapons/bullet_emitters/hit_scan_bullet_emitter.tscn" id="8_ffbs3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jyx7a"]
 
@@ -208,7 +210,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody3D"]
-collision_layer = 2
+collision_layer = 6
 collision_mask = 3
 script = ExtResource("1_7n32i")
 
@@ -286,6 +288,15 @@ libraries = {
 }
 autoplay = "RESET"
 
+[node name="BulletEmitter" parent="Camera3D" instance=ExtResource("7_2m71p")]
+
+[node name="Timer" type="Timer" parent="Camera3D/BulletEmitter"]
+autostart = true
+
+[node name="HitScanBulletEmitter" parent="Camera3D/BulletEmitter" instance=ExtResource("8_ffbs3")]
+
 [node name="CharacterMover" parent="." instance=ExtResource("2_vtwgx")]
 
 [node name="HealthManager" parent="." instance=ExtResource("3_b3ae6")]
+
+[connection signal="timeout" from="Camera3D/BulletEmitter/Timer" to="Camera3D/BulletEmitter" method="fire"]

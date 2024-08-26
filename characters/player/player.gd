@@ -44,8 +44,6 @@ func _input(event):
 	
 	
 func _process(delta):
-	if dead:
-		return
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
 	if Input.is_action_just_pressed("restart"):
@@ -69,3 +67,6 @@ func _process(delta):
 func kill():
 	dead = true
 	character_mover.set_move_dir(Vector3.ZERO)
+	
+func hurt(damage_data: DamageData):
+	health_manager.hurt(damage_data)

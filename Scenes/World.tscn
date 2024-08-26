@@ -1,12 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://wcohgukxxckn"]
+[gd_scene load_steps=14 format=3 uid="uid://wcohgukxxckn"]
 
 [ext_resource type="PackedScene" uid="uid://b6ae8gsib8s7d" path="res://Environment/rock_boulder.tscn" id="1_qsaq3"]
 [ext_resource type="PackedScene" uid="uid://rdac1dtp4lwp" path="res://Environment/rock_cliff.tscn" id="2_inia4"]
 [ext_resource type="PackedScene" uid="uid://dxr2xyblbuw85" path="res://Environment/rock_pillar.tscn" id="3_l1q7i"]
 [ext_resource type="PackedScene" uid="uid://c6bu2y3mx70d3" path="res://Environment/sand.tscn" id="4_iey3c"]
 [ext_resource type="Material" uid="uid://ca63xobsh7t3s" path="res://Environment/Assets/1x1_grid.tres" id="5_51e0j"]
-[ext_resource type="PackedScene" uid="uid://bosesbvnakx3t" path="res://characters/player/Player.tscn" id="6_ssm7k"]
+[ext_resource type="PackedScene" uid="uid://bosesbvnakx3t" path="res://Characters/Player/Player.tscn" id="6_ssm7k"]
 [ext_resource type="Script" path="res://Test/test_bullet_hit_effect_spawn.gd" id="7_wm2hh"]
+[ext_resource type="PackedScene" uid="uid://dl4sr7k2hgvdi" path="res://Weapons/bullet_emitters/bullet_emitter.tscn" id="8_6f242"]
+[ext_resource type="PackedScene" uid="uid://b0r4p3uwrtw8p" path="res://Weapons/bullet_emitters/hit_scan_bullet_emitter.tscn" id="9_gswvq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_staw2"]
 
@@ -17,6 +19,8 @@ sky_material = SubResource("ProceduralSkyMaterial_staw2")
 background_mode = 2
 sky = SubResource("Sky_c2ql7")
 tonemap_mode = 3
+
+[sub_resource type="BoxMesh" id="BoxMesh_mbe7g"]
 
 [node name="World" type="Node3D"]
 
@@ -50,8 +54,20 @@ size = Vector3(50, 6, 50)
 material = ExtResource("5_51e0j")
 
 [node name="Player" parent="." instance=ExtResource("6_ssm7k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -2, 0, 4)
 script = ExtResource("7_wm2hh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.5, 0)
+mesh = SubResource("BoxMesh_mbe7g")
+
+[node name="BulletEmitter" parent="MeshInstance3D" instance=ExtResource("8_6f242")]
+
+[node name="Timer" type="Timer" parent="MeshInstance3D/BulletEmitter"]
+autostart = true
+
+[node name="HitScanBulletEmitter" parent="MeshInstance3D/BulletEmitter" instance=ExtResource("9_gswvq")]
+
+[connection signal="timeout" from="MeshInstance3D/BulletEmitter/Timer" to="MeshInstance3D/BulletEmitter" method="fire"]
