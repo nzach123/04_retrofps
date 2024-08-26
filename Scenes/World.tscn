@@ -1,0 +1,52 @@
+[gd_scene load_steps=10 format=3 uid="uid://wcohgukxxckn"]
+
+[ext_resource type="PackedScene" uid="uid://b6ae8gsib8s7d" path="res://Environment/rock_boulder.tscn" id="1_qsaq3"]
+[ext_resource type="PackedScene" uid="uid://rdac1dtp4lwp" path="res://Environment/rock_cliff.tscn" id="2_inia4"]
+[ext_resource type="PackedScene" uid="uid://dxr2xyblbuw85" path="res://Environment/rock_pillar.tscn" id="3_l1q7i"]
+[ext_resource type="PackedScene" uid="uid://c6bu2y3mx70d3" path="res://Environment/sand.tscn" id="4_iey3c"]
+[ext_resource type="Material" uid="uid://ca63xobsh7t3s" path="res://Environment/Assets/1x1_grid.tres" id="5_51e0j"]
+[ext_resource type="PackedScene" uid="uid://bosesbvnakx3t" path="res://characters/player/Player.tscn" id="6_ssm7k"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_staw2"]
+
+[sub_resource type="Sky" id="Sky_c2ql7"]
+sky_material = SubResource("ProceduralSkyMaterial_staw2")
+
+[sub_resource type="Environment" id="Environment_cyn1r"]
+background_mode = 2
+sky = SubResource("Sky_c2ql7")
+tonemap_mode = 3
+
+[node name="World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_cyn1r")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, -0.12941, 0.677077, 0.724444, -0.482963, 0.595035, -0.642402, 0, 7, 0)
+shadow_enabled = true
+
+[node name="Environment" type="Node3D" parent="."]
+visible = false
+
+[node name="RockBoulder" parent="Environment" instance=ExtResource("1_qsaq3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.9869, 0, 0)
+
+[node name="RockCliff" parent="Environment" instance=ExtResource("2_inia4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.1215, 0, 0)
+
+[node name="RockPillar" parent="Environment" instance=ExtResource("3_l1q7i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24.8024)
+
+[node name="Sand" parent="Environment" instance=ExtResource("4_iey3c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+use_collision = true
+flip_faces = true
+size = Vector3(50, 6, 50)
+material = ExtResource("5_51e0j")
+
+[node name="Player" parent="." instance=ExtResource("6_ssm7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
