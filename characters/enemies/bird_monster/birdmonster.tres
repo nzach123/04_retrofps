@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dndi8hyovob8e"]
+
+[ext_resource type="Texture2D" uid="uid://cr2qdtsvp6spi" path="res://Characters/enemies/bird_monster/bird_texture.png" id="1_lg2qa"]
+
+[resource]
+resource_name = "birdmonster"
+albedo_texture = ExtResource("1_lg2qa")
+texture_filter = 2

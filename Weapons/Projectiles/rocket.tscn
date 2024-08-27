@@ -6,6 +6,21 @@
 [ext_resource type="PackedScene" uid="uid://3lcixj2832b3" path="res://Effects/muzzle_flash/assets/muzzleflash3.glb" id="3_wca3w"]
 [ext_resource type="PackedScene" uid="uid://ctwixgwqvunyx" path="res://Weapons/bullet_emitters/area_damage_emitter.tscn" id="5_phav6"]
 
+[sub_resource type="Animation" id="Animation_20hi1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_eog3m"]
 resource_name = "spin"
 loop_mode = 1
@@ -20,21 +35,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 6.28319)]
-}
-
-[sub_resource type="Animation" id="Animation_20hi1"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_un134"]

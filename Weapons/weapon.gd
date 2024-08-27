@@ -55,6 +55,13 @@ func actually_attack():
 	bullet_emitter.fire()
 
 func set_active(a: bool):
+	$Crosshairs.visible = a
 	visible = a
 	if !a:
 		animation_player.play("RESET")
+		
+func is_idle() -> bool:
+	return !animation_player.is_playing()
+	
+	
+	

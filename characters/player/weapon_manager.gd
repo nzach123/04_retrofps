@@ -1,5 +1,6 @@
 extends Node3D
 
+@onready var animation_player = $AnimationPlayer
 
 @onready var weapons = $Weapons.get_children()
 
@@ -22,7 +23,7 @@ func attack(input_just_pressed: bool, input_held: bool):
 	
 func disable_all_weapons():
 	for weapon in weapons:
-		if has_method("set_active"):
+		if weapon.has_method("set_active"):
 			weapon.set_active(false)
 		else:
 			weapon.hide()
@@ -48,9 +49,18 @@ func switch_to_weapon_slot(slot_ind: int)->bool:
 	disable_all_weapons()
 	cur_slot = slot_ind
 	cur_weapon = weapons[cur_slot]
-	if has_method("set_active"):
+	if cur_weapon.has_method("set_active"):
 		cur_weapon.set_active(true)
 	else:
 		cur_weapon.show()
 	return true
+	
+func update_animation(velocity: Vector3, grounded: bool):
+	if cur_weapon is Weapon and !cur_weapon.is_idle():
+		animation_player.play("RESET")
+	elif !grounded or velocity.length() < 5.0:
+		animation_player.play("RESET", 0.5)
+	else:
+		animation_player.play("moving", 0.5)
+		
 	
