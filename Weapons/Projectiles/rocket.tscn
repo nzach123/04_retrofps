@@ -139,14 +139,14 @@ scale_max = 0.2
 offsets = PackedFloat32Array(0.618182, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_moxcf"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ugrtb"]
 gradient = SubResource("Gradient_qvsqa")
 
 [sub_resource type="Curve" id="Curve_kd3c6"]
 _data = [Vector2(0, 1), 0.0, -0.0860807, 0, 0, Vector2(1, 0), -3.61539, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_j2hxw"]
+[sub_resource type="CurveTexture" id="CurveTexture_6ov42"]
 curve = SubResource("Curve_kd3c6")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0cr1f"]
@@ -160,9 +160,9 @@ angular_velocity_max = 9.99998
 gravity = Vector3(0, 0.1, 0)
 scale_min = 3.0
 scale_max = 4.0
-scale_curve = SubResource("CurveTexture_j2hxw")
+scale_curve = SubResource("CurveTexture_6ov42")
 color = Color(0.54, 0.54, 0.54, 0.607843)
-color_ramp = SubResource("GradientTexture1D_moxcf")
+color_ramp = SubResource("GradientTexture1D_ugrtb")
 
 [node name="Rocket" instance=ExtResource("1_ie5em")]
 script = ExtResource("2_i7ve3")

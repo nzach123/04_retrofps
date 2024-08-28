@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://wcohgukxxckn"]
+[gd_scene load_steps=20 format=3 uid="uid://wcohgukxxckn"]
 
 [ext_resource type="PackedScene" uid="uid://b6ae8gsib8s7d" path="res://Environment/rock_boulder.tscn" id="1_qsaq3"]
 [ext_resource type="PackedScene" uid="uid://rdac1dtp4lwp" path="res://Environment/rock_cliff.tscn" id="2_inia4"]
@@ -8,6 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://bosesbvnakx3t" path="res://Characters/Player/Player.tscn" id="6_ssm7k"]
 [ext_resource type="PackedScene" uid="uid://flp5ges85jcd" path="res://Characters/enemies/bird_monster/bird_monster.tscn" id="7_4f1i6"]
 [ext_resource type="PackedScene" uid="uid://dy5gyte3ur6p5" path="res://Characters/enemies/reptile_monster/reptile_monster.tscn" id="8_r13qm"]
+[ext_resource type="PackedScene" uid="uid://druafewwbnysf" path="res://pickups/health_pickup.tscn" id="9_6ragu"]
+[ext_resource type="PackedScene" uid="uid://gvwchsg53nm7" path="res://pickups/machine_gun_pickup.tscn" id="10_euq0n"]
+[ext_resource type="PackedScene" uid="uid://bg5kto1smhbb6" path="res://pickups/machine_gun_ammo_pickup.tscn" id="11_hanbm"]
+[ext_resource type="PackedScene" uid="uid://dvutxmnclkcrh" path="res://pickups/rock_launcher_ammo_pickup.tscn" id="12_s44of"]
+[ext_resource type="PackedScene" uid="uid://bhpho37075ckk" path="res://pickups/rocket_launcher_pickup.tscn" id="13_08lfo"]
+[ext_resource type="PackedScene" uid="uid://w3y2ig7sgkyw" path="res://pickups/shotgun_ammo_pickup.tscn" id="14_s1b0u"]
+[ext_resource type="PackedScene" uid="uid://qthljg80pjem" path="res://pickups/shotgun_pickup.tscn" id="15_kvwm2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_staw2"]
 
@@ -19,6 +26,11 @@ background_mode = 2
 sky = SubResource("Sky_c2ql7")
 tonemap_mode = 3
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_aqntd"]
+vertices = PackedVector3Array(1.15079, 28.5955, -27.445, -2.09921, 29.0955, -27.445, -2.34921, 29.5955, -25.945, -2.34921, 29.0955, -22.695, 2.15079, 28.3455, -22.695, 2.15079, 28.5955, -24.945, 0.0674629, 29.0955, -27.445, -2.34921, 29.8455, -24.8616, -0.099205, 29.3455, -22.695, -0.0891914, 29.5955, -23.709, -24.3492, 0.345484, -24.445, -24.3492, 0.345484, -13.195, -23.3492, 0.345484, -12.945, -23.5992, 0.345484, 12.055, -24.3492, 0.345484, 12.555, -24.3492, 0.345484, 24.305, -22.5992, 0.345484, -10.945, -0.599205, 0.345484, -20.945, -3.34921, 0.345484, -21.695, -3.84921, 0.345484, -24.445, 24.4008, 0.345484, -24.445, 3.90079, 0.345484, -24.445, 3.15079, 0.345484, -21.445, -21.3492, 0.345484, -2.19497, -21.3492, 0.345484, 0.555027, 24.4008, 0.345484, 24.305, -0.115913, 1.34548, -1.1705, 10.3759, 0.345484, 6.32151, -10.6146, 0.345484, 4.78808, -0.119503, 1.09548, 4.81499, -7.62131, 0.345484, -2.68307, -0.118057, 0.345484, 10.7834, 1.40206, 0.345484, -11.7163, 4.39847, 0.845484, -4.18084, 10.3974, 0.345484, -10.2197, -3.0888, 0.845484, 7.80224, -7.59312, 0.345484, 10.8285, -6.09061, 0.845484, 0.30418, -4.5749, 0.595484, 3.30242, 2.15079, 0.345484, -22.695, 2.40079, 0.345484, -23.945, 2.40079, 0.345484, -24.445, -2.34921, 0.345484, -24.445, -2.09921, 0.345484, -22.695, -0.349205, 0.345484, -22.445, -24.0992, 28.3455, 1.30503, -24.0992, 28.3455, -0.194973, -24.8492, 28.3455, -1.69497, -30.3492, 28.5955, -11.195, -46.5992, 29.8455, -0.444973, -46.5992, 28.8455, 12.305, -35.5992, 29.3455, 11.305, -45.0992, 28.8455, -11.195, -36.2492, 29.0955, -11.195, -36.0832, 29.8455, 0.302942, -39.0874, 29.5955, 9.28908, -34.599, 28.8455, -8.70517, -37.619, 29.3455, -8.67714, -26.5992, 28.0955, 12.555, -24.3492, 0.345484, -10.195, -24.3492, 0.345484, 7.05503, -22.5992, 0.345484, -0.444973, -23.3492, 0.345484, -7.44497, 32.1508, 3.09548, 2.30503, 32.4008, 3.34548, 1.30503, 32.1508, 3.84548, -2.69497, 27.9008, 3.59548, -2.69497, 27.4008, 3.34548, -0.194973, 27.4008, 3.34548, 2.55503, 29.8958, 3.59548, 0.302002)
+polygons = [PackedInt32Array(4, 9, 5), PackedInt32Array(5, 6, 0), PackedInt32Array(6, 2, 1), PackedInt32Array(2, 9, 7), PackedInt32Array(7, 9, 3), PackedInt32Array(3, 9, 8), PackedInt32Array(8, 9, 4), PackedInt32Array(9, 6, 5), PackedInt32Array(6, 9, 2), PackedInt32Array(12, 11, 10), PackedInt32Array(15, 14, 13), PackedInt32Array(12, 10, 16), PackedInt32Array(16, 10, 18), PackedInt32Array(16, 18, 17), PackedInt32Array(10, 19, 18), PackedInt32Array(22, 21, 20), PackedInt32Array(17, 22, 16), PackedInt32Array(16, 22, 23), PackedInt32Array(20, 34, 22), PackedInt32Array(22, 30, 24), PackedInt32Array(24, 28, 13), PackedInt32Array(13, 36, 15), PackedInt32Array(15, 31, 25), PackedInt32Array(25, 27, 20), PackedInt32Array(34, 32, 22), PackedInt32Array(20, 27, 34), PackedInt32Array(30, 28, 24), PackedInt32Array(22, 32, 30), PackedInt32Array(28, 36, 13), PackedInt32Array(36, 31, 15), PackedInt32Array(31, 27, 25), PackedInt32Array(34, 33, 32), PackedInt32Array(27, 33, 34), PackedInt32Array(30, 37, 28), PackedInt32Array(32, 26, 30), PackedInt32Array(28, 35, 36), PackedInt32Array(36, 35, 31), PackedInt32Array(31, 29, 27), PackedInt32Array(33, 26, 32), PackedInt32Array(27, 29, 33), PackedInt32Array(37, 38, 28), PackedInt32Array(30, 26, 37), PackedInt32Array(28, 38, 35), PackedInt32Array(35, 29, 31), PackedInt32Array(33, 29, 26), PackedInt32Array(37, 26, 38), PackedInt32Array(38, 29, 35), PackedInt32Array(29, 38, 26), PackedInt32Array(24, 23, 22), PackedInt32Array(40, 39, 41), PackedInt32Array(41, 39, 44), PackedInt32Array(41, 44, 43), PackedInt32Array(41, 43, 42), PackedInt32Array(46, 45, 47), PackedInt32Array(47, 45, 48), PackedInt32Array(53, 57, 52), PackedInt32Array(52, 57, 49), PackedInt32Array(49, 55, 50), PackedInt32Array(50, 55, 51), PackedInt32Array(51, 54, 45), PackedInt32Array(45, 56, 48), PackedInt32Array(48, 56, 53), PackedInt32Array(53, 56, 57), PackedInt32Array(57, 54, 49), PackedInt32Array(49, 54, 55), PackedInt32Array(55, 54, 51), PackedInt32Array(54, 56, 45), PackedInt32Array(56, 54, 57), PackedInt32Array(45, 58, 51), PackedInt32Array(62, 61, 59), PackedInt32Array(59, 61, 60), PackedInt32Array(67, 69, 68), PackedInt32Array(68, 69, 63), PackedInt32Array(63, 69, 64), PackedInt32Array(64, 69, 65), PackedInt32Array(65, 69, 66), PackedInt32Array(66, 69, 67)]
+geometry_source_geometry_mode = 1
+
 [node name="World" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -28,7 +40,14 @@ environment = SubResource("Environment_cyn1r")
 transform = Transform3D(-0.866025, -0.433013, 0.25, -0.12941, 0.677077, 0.724444, -0.482963, 0.595035, -0.642402, 0, 7, 0)
 shadow_enabled = true
 
-[node name="Environment" type="Node3D" parent="."]
+[node name="CSGBox3D" type="CSGBox3D" parent="." groups=["navigation_mesh_source_group"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+use_collision = true
+flip_faces = true
+size = Vector3(50, 6, 50)
+material = ExtResource("5_51e0j")
+
+[node name="Environment" type="Node3D" parent="." groups=["navigation_mesh_source_group"]]
 visible = false
 
 [node name="RockBoulder" parent="Environment" instance=ExtResource("1_qsaq3")]
@@ -43,12 +62,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24.8024)
 [node name="Sand" parent="Environment" instance=ExtResource("4_iey3c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-use_collision = true
-flip_faces = true
-size = Vector3(50, 6, 50)
-material = ExtResource("5_51e0j")
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+visible = false
+navigation_mesh = SubResource("NavigationMesh_aqntd")
 
 [node name="Player" parent="." instance=ExtResource("6_ssm7k")]
 
@@ -57,3 +73,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
 
 [node name="ReptileMonster" parent="." instance=ExtResource("8_r13qm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25248, 0, -8)
+
+[node name="Pickups" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="HealthPickup" parent="Pickups" instance=ExtResource("9_6ragu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7, 0, 0)
+
+[node name="MachineGunPickup" parent="Pickups" instance=ExtResource("10_euq0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.2, 0, 0)
+
+[node name="MachineGunAmmoPickup" parent="Pickups" instance=ExtResource("11_hanbm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2, 0, 0)
+
+[node name="RockLauncherAmmoPickup" parent="Pickups" instance=ExtResource("12_s44of")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
+
+[node name="RocketLauncherPickup" parent="Pickups" instance=ExtResource("13_08lfo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9, 0, 0)
+
+[node name="ShotgunAmmoPickup" parent="Pickups" instance=ExtResource("14_s1b0u")]
+
+[node name="ShotgunPickup" parent="Pickups" instance=ExtResource("15_kvwm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0, 0)

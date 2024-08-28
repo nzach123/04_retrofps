@@ -1,0 +1,96 @@
+[gd_scene load_steps=14 format=3 uid="uid://qthg2lta8f17"]
+
+[ext_resource type="PackedScene" uid="uid://dmn7wq8kao5ea" path="res://Weapons/Projectiles/projectile.tscn" id="1_7ko40"]
+[ext_resource type="Texture2D" uid="uid://cty4gixkox3ds" path="res://Weapons/Projectiles/assets/fire_spritesheet.png" id="2_wbuy4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gsyy"]
+atlas = ExtResource("2_wbuy4")
+region = Rect2(0, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txeg5"]
+atlas = ExtResource("2_wbuy4")
+region = Rect2(42, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fld3n"]
+atlas = ExtResource("2_wbuy4")
+region = Rect2(0, 42, 42, 42)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u2w0v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gsyy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txeg5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fld3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txeg5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yk8mh"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="Gradient" id="Gradient_8vvmu"]
+offsets = PackedFloat32Array(0.618182, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_moxcf"]
+gradient = SubResource("Gradient_8vvmu")
+
+[sub_resource type="Curve" id="Curve_y0xwk"]
+_data = [Vector2(0, 1), 0.0, -0.0860807, 0, 0, Vector2(1, 0), -3.61539, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_j2hxw"]
+curve = SubResource("Curve_y0xwk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ya0ks"]
+particle_flag_rotate_y = true
+emission_shape = 1
+emission_sphere_radius = 0.4
+angle_min = 1.07288e-05
+angle_max = 720.0
+angular_velocity_min = -10.0
+angular_velocity_max = 9.99998
+gravity = Vector3(0, 0.1, 0)
+scale_min = 0.4
+scale_max = 0.7
+scale_curve = SubResource("CurveTexture_j2hxw")
+color = Color(0.54, 0.54, 0.54, 0.607843)
+color_ramp = SubResource("GradientTexture1D_moxcf")
+
+[sub_resource type="SphereMesh" id="SphereMesh_j6hc1"]
+radial_segments = 7
+rings = 3
+
+[node name="Fireball" instance=ExtResource("1_7ko40")]
+delete_on_hit_after_time = 2.0
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Graphics" index="0"]
+pixel_size = 0.03
+billboard = 1
+texture_filter = 2
+sprite_frames = SubResource("SpriteFrames_u2w0v")
+autoplay = "default"
+frame_progress = 0.991746
+
+[node name="ExplosionSmokeParticles" type="GPUParticles3D" parent="." index="2"]
+material_override = SubResource("StandardMaterial3D_yk8mh")
+emitting = false
+amount = 5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ya0ks")
+draw_pass_1 = SubResource("SphereMesh_j6hc1")
+
+[connection signal="hit_something" from="." to="ExplosionSmokeParticles" method="restart"]

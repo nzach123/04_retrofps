@@ -118,7 +118,10 @@ fullscreen={
 3d_physics/layer_1="Environment"
 3d_physics/layer_2="Characters"
 3d_physics/layer_3="Hitboxes"
+3d_physics/layer_4="Gibs"
+3d_physics/layer_5="Pickups"
 
 [rendering]
 
-renderer/rendering_method="mobile"
+anti_aliasing/quality/msaa_3d=1
+anti_aliasing/quality/use_taa=true

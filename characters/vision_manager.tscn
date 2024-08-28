@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://tsam4rhq6j3i"]
+
+[ext_resource type="Script" path="res://Characters/vision_manager.gd" id="1_bpgmg"]
+
+[node name="VisionManager" type="Node3D"]
+script = ExtResource("1_bpgmg")
+
+[node name="LOSRayCast3D" type="RayCast3D" parent="."]
+enabled = false

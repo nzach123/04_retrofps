@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bggve1b1xsytv"]
+
+[ext_resource type="PackedScene" uid="uid://efhaiq50xokb" path="res://Characters/CharacterMover.tscn" id="1_jwe8y"]
+[ext_resource type="Script" path="res://Characters/enemies/ai_character_mover.gd" id="2_0h8ms"]
+
+[node name="AICharacterMover" instance=ExtResource("1_jwe8y")]
+script = ExtResource("2_0h8ms")
+turn_speed = 300.0
+max_speed = 4.0
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="0"]

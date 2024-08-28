@@ -8,15 +8,18 @@ class_name Weapon
 @export var automatic = false
 
 @export var damage = 5
-@export var ammo = 30
+@export var ammo = 0
 
 @export var attack_rate = 0.2
 var last_attack_time = -9999.9
 
 @export var animation_controlled_attack = false
 
+@export var silent_weapon = false
+
 signal fired
 signal out_of_ammo
+signal ammo_update(ammo_amnt: int)
 
 func _ready() -> void:
 	bullet_emitter.set_damage(damage)
@@ -47,6 +50,7 @@ func attack(input_just_pressed: bool, input_held: bool):
 	last_attack_time = cur_time
 	animation_player.stop()
 	animation_player.play("attack")
+	fired.emit()
 	if has_node("Graphics/MuzzleFlash"):
 		$Graphics/MuzzleFlash.flash()
 
@@ -62,6 +66,10 @@ func set_active(a: bool):
 		
 func is_idle() -> bool:
 	return !animation_player.is_playing()
+	
+func add_ammo(amnt : int):
+	ammo += amnt
+	ammo_update.emit(ammo)
 	
 	
 	
